@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements EDFFilesListDialo
     private ArrayList<String> edfFilePathList;
     private int iClassifierSelected = 0;
     private int iServerSelected = 0;
-
+    private int clickedPos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements EDFFilesListDialo
         btnChooseEdf.setVisibility(View.GONE);
         tvEdfFileName.setVisibility(View.VISIBLE);
         tvEdfFileName.setText(edfFileNamesList.get(position));
+        clickedPos = position;
     }
 
 
@@ -126,11 +127,15 @@ public class MainActivity extends AppCompatActivity implements EDFFilesListDialo
 
     private void login() {
 
-        if (btnChooseEdf.getVisibility() == View.VISIBLE) {
+        if (btnChooseEdf.getVisibility() == View.VISIBLE){
             Toast.makeText(getApplicationContext(), "Please Fill all the details", Toast.LENGTH_SHORT).show();
         } else {
             try {
-                Thread.sleep(2000);
+                Thread.sleep(2);
+                String path = edfFilePathList.get(clickedPos);
+                String fileName = edfFileNamesList.get(clickedPos);
+                System.out.println("PATH is " + path);
+                new S3Handler().uploadFile(path,fileName,getApplicationContext());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
