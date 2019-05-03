@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">BrainNet Authentication</string>
+    <string name="login">Login</string>
+    <string name="choose">Choose</string>
+    <string name="username">UserName</string>
+    <string name="edf_file">Edf file</string>
+    <string name="result">Result</string>
+
+    <string-array name="classifiers">
+        <item>Naive Bayes</item>
+        <item>SVM</item>
+        <item>K-NN</item>
+        <item>Decision Tree</item>
+    </string-array>
+
+    <string-array name="servers">
+        <item>Cloud Server</item>
+        <item>Fog Server</item>
+    </string-array>
 </resources>
